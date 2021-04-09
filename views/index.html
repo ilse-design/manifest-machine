@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Manifest Machine</title>
+</head>
+<body>
+
+<h1>Democratic manifest machine</h1>
+<p>Undermin_through_design by Ilse Pouwels</p>
+
+<h2>Control GPIO 4</h2>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <script>
+        var socket = io.connect(); //load socket.io-client and connect to the host
+        function LEDOn() {
+            socket.emit("state", 1); //send button state to server
+	console.log("button pressed");
+        }
+
+        function LEDOff() {
+            socket.emit("state", 0); //send button state to server
+        }
+    </script>
+
+
+
+    <button type="button" id="state" onclick="LEDOff()" style="background-color:red;">OFF</button>
+    <button type="button" id="state" onclick="LEDOn()" style="background-color:green;">ON</button>
+
+<video id="video" src="http://localhost:8001" autoplay="autoplay" />
+
+</body>
+</html>
